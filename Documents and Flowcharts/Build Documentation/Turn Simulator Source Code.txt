@@ -3,66 +3,134 @@
 
 using namespace std;
 
+
+void _2pl_function(bool &);
+
 int main()
 {
-	bool troof = 1;
-	int turn_counter = 0;
-	int day_counter = turn_counter;
+    bool troof = 1;
+/*	int turn_counter = 1;
+	int day_counter = 0;*/
+
+	cout << "This starts the turn simulator" << endl;
 
 	do
 	{
-		cout << "This starts the turn simulator" << endl;
-
-		bool stuff = 1;
-
+		_2pl_function(troof);
+		/*bool stuff = 1;
+		//Snip here
+		//Call function _2pl_function() here
+		cout << "Turn: " << turn_counter << endl;
+		cout << "Day:  " << day_counter + 1 << endl;
 		cout << "Player 1, take your turn: " << endl;
 		do
 		{
-			char shit;
+			string shit;
 			cout << "Blah blah blah\n";
-			cout << "Doing some stuff\n";
+			cout << "Doing some stuff\n\n";
 			cout << "Would you like to stop doing some stuff?\n";
 			cin >> shit;
 
-			if (shit == 'y' || shit == 'Y')
+			if (shit == "y" || shit == "Y")
 				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				return 0;
 			else
 				cout << "Okay, let's keep doing stuff.\n";
-		} while (stuff);
+		} while (stuff); //This is player 1 stuff
 
 
 		stuff = 1;
 		cout << "Player 2, take your turn: \n";
 		do
 		{
-			char shit;
+			string shit;
 			cout << "Blah blah blah\n";
-			cout << "Doing some stuff\n";
+			cout << "Doing some stuff\n\n";
 			cout << "Would you like to stop doing some stuff?\n";
 			cin >> shit;
 
-			if (shit == 'y' || shit == 'Y')
+			if (shit == "y" || shit == "Y")
 				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				return 0;
 			else
 				cout << "Okay, let's keep doing stuff.\n";
-		} while (stuff);
+		} while (stuff); //This is player 2 stuff
 
 		if (turn_counter == 6)
 		{
 			day_counter++;
-			turn_counter = 0;
+			turn_counter = 1;
 		}
 		else
 			turn_counter++;
 
 		if (day_counter == 3)
 			troof = 0;
-
+		*/
 	} while (troof);
 
 	cout << "This signifies the end of the game" << endl;
-	cout << "Thank you for playing...Goodbye";
+	cout << "Thank you for playing...Goodbye\n";
 
 	system("pause");
 	return 0;
+}
+
+void _2pl_function(bool &check)
+{
+	int turn_counter = 1;
+	int day_counter = 0;
+
+	bool stuff = 1;
+
+	cout << "Turn: " << turn_counter << endl;
+	cout << "Day:  " << day_counter + 1 << endl;
+	cout << "Player 1, take your turn: " << endl;
+	do
+	{
+		string shit;
+		cout << "Blah blah blah\n";
+		cout << "Doing some stuff\n\n";
+		cout << "Would you like to stop doing some stuff?\n";
+		cin >> shit;
+
+		if (shit == "y" || shit == "Y")
+			stuff = 0;
+		else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+			exit;
+		else
+			cout << "Okay, let's keep doing stuff.\n";
+	} while (stuff); //This is player 1 stuff
+
+
+	stuff = 1;
+	cout << "Player 2, take your turn: \n";
+	do
+	{
+		string shit;
+		cout << "Blah blah blah\n";
+		cout << "Doing some stuff\n\n";
+		cout << "Would you like to stop doing some stuff?\n";
+		cin >> shit;
+
+		if (shit == "y" || shit == "Y")
+			stuff = 0;
+		else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+			exit;
+		else
+			cout << "Okay, let's keep doing stuff.\n";
+	} while (stuff); //This is player 2 stuff
+
+	if (turn_counter == 6)
+	{
+		day_counter++;
+		turn_counter = 1;
+	}
+	else
+		turn_counter++;
+
+	if (day_counter == 3)
+		check = 0;
 }
