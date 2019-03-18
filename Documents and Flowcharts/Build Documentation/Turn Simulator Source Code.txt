@@ -7,24 +7,14 @@ char player_select_screen();
 void _2pl_function(bool &);
 void _3pl_function(bool &);
 void _4pl_function(bool &);
+void start_game(char);
 
 int main()
 {
 	//substitute for plDecide
 	char plDecide = player_select_screen();
 
-	bool check = 1;
-
-	if (plDecide == 'A' || plDecide == 'a')
-		_2pl_function(check);
-	else if (plDecide == 'B' || plDecide == 'b')
-		_3pl_function(check);
-	else if (plDecide == 'C' || plDecide == 'c')
-		_4pl_function(check);
-	else
-		cout << "Please choose a viable option only\n";
-	
-	cout << "This starts the turn simulator" << endl;
+	start_game(plDecide);
 	
 	cout << "This signifies the end of the game" << endl;
 	cout << "Thank you for playing...Goodbye\n";
@@ -35,11 +25,9 @@ int main()
 
 char player_select_screen()
 {
-	//stuff happens here
-	bool stuff = 1;
 	char plDecide;
 
-	while (stuff)
+	while (true)
 	{
 		cout << "Player select screen\n\n";
 		cout << "Minimum 2 players required\n\n";
@@ -49,7 +37,14 @@ char player_select_screen()
 		cout << "C: 4 Player\n";
 		cin >> plDecide;
 
-		if (plDecide == '') //Start here bozo 3-19-2019
+		if (plDecide == 'A' || plDecide == 'a')
+			return plDecide;
+		else if (plDecide == 'B' || plDecide == 'b')
+			return plDecide;
+		else if (plDecide == 'C' || plDecide == 'c')
+			return plDecide;
+		else
+			cout << "Please enter a valid response\n";
 	};
 
 	return plDecide;
@@ -102,6 +97,9 @@ void _2pl_function(bool &check)
 			else
 				cout << "Okay, let's keep doing stuff.\n";
 		} while (stuff); //This is player 2 stuff
+
+		day_counter = 3;
+		turn_counter = 6; //you left off here bozo 3/18/2019
 
 		if (turn_counter == 6)
 		{
@@ -291,3 +289,65 @@ void _4pl_function(bool &check) //This will have the same code as 2 player mode 
 			check = 0;
 	} while (check);
 }
+
+void start_game(char plDecide)
+{
+	bool check = true;
+	char rematch_;
+
+	while (check == true)
+	{	
+		if (plDecide == 'A' || plDecide == 'a')
+			_2pl_function(check);
+		else if (plDecide == 'B' || plDecide == 'b')
+			_3pl_function(check);
+		else
+			_4pl_function(check);
+
+		cout << "Would you like a rematch?";
+		cin >> rematch_;
+
+		if (rematch_ == 'n' || rematch_ == 'N')
+			check = false;
+		else if (rematch_ == 'y' || rematch_ == 'Y')
+			cout << "Here we go again\n\n";
+		else
+			cout << "Please enter a valid response\n";
+/*
+//		bool shite = 1;
+//		do
+//		{
+			cin >> rematch_;
+			if (rematch_ == 'n' || rematch_ == 'N')
+				check = 0;
+			else if (rematch_ == 'y' || rematch_ == 'Y')
+				cout << "Here we go again\n\n";
+			else
+				cout << "Please enter a valid response\n";
+//		} while (shite);*/
+	};
+}
+
+/*while (check)
+{
+	if (plDecide == 'A' || plDecide == 'a')
+		_2pl_function(check);
+	else if (plDecide == 'B' || plDecide == 'b')
+		_3pl_function(check);
+	else
+		_4pl_function(check);
+
+	cout << "Would you like a rematch?";
+
+	bool shite = 1;
+	do
+	{
+		cin >> rematch_;
+		if (rematch_ == 'n' || rematch_ == 'N')
+			check = 0;
+		else if (rematch_ == 'y' || rematch_ == 'Y')
+			cout << "Here we go again\n\n";
+		else
+			cout << "Please enter a valid response\n";
+	} while (shite);
+};*/
