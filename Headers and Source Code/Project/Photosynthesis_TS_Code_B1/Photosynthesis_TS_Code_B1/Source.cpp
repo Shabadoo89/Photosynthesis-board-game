@@ -22,31 +22,31 @@ void _3pl_function(bool &);
 void _4pl_function(bool &);
 void start_game(char);
 
+/*The first additional lines of code will be pseudo_code. In other words the code may stay in the main function
+or it may move to a function of its own within the same source file or to a different header file.
+
+Typical turn sequence.
+1. Photosynthesis Phase: The player with the First Player Token moves the Sun Segment clockwise, to the next angle on the hexegonal
+	board. (note: this step is skipped during the first round of the game) Light points are accumulated based on the position of the sun.
+
+2. Life Cycle Phase: After all players have collected their Light points, whoever holds the First Player Token starts taking their actions.
+	Here is a list of the possible actions. The player can buy trees or seedlings from their waiting section with the Light points accrued
+	during the photosynthesis phase. They can also plant seeds, depending on the placement of their trees. They can also grow their trees and/or
+	cultivate them. All these actions require them to spend their Light points except for planting a seed. These actions do not need to be 
+	taken in any particular order, although strategy may require otherwise.
+
+The notes taken here are not the end all be all for the rules. Please consult the "Rules" section of the GitHub for a complete description of
+how the game is supposed to work.*/
+
+/*
+Update 3-20-2019:
+I have been working on a turn simulator during school and work hours. I ended up writing a better version during that time so I will post the progress
+I have made so far here. Please refer to Turn Simulator Source Code in C:\Users\Shabadoo\Desktop\GitHub Projects\Photosynthesis Game\Photosynthesis-board-game\Documents and Flowcharts\Build Documentation
+for further updates.
+*/
+
 int main()
 {
-	//The first additional lines of code will be pseudo_code. In other words the code may stay in the main function
-	//or it may move to a function of its own within the same source file or to a different header file.
-
-	//Typical turn sequence.
-	//1. Photosynthesis Phase: The player with the First Player Token moves the Sun Segment clockwise, to the next angle on the hexegonal
-	//	board. (note: this step is skipped during the first round of the game) Light points are accumulated based on the position of the sun.
-
-	//2. Life Cycle Phase: After all players have collected their Light points, whoever holds the First Player Token starts taking their actions.
-	//	Here is a list of the possible actions. The player can buy trees or seedlings from their waiting section with the Light points accrued
-	//	during the photosynthesis phase. They can also plant seeds, depending on the placement of their trees. They can also grow their trees and/or
-	//	cultivate them. All these actions require them to spend their Light points except for planting a seed. These actions do not need to be 
-	//	taken in any particular order, although strategy may require otherwise.
-
-	//The notes taken here are not the end all be all for the rules. Please consult the "Rules" section of the GitHub for a complete description of
-	//how the game is supposed to work.
-
-	/*
-	Update 3-20-2019:
-	I have been working on a turn simulator during school and work hours. I ended up writing a better version during that time so I will post the progress
-	I have made so far here. Please refer to Turn Simulator Source Code in C:\Users\Shabadoo\Desktop\GitHub Projects\Photosynthesis Game\Photosynthesis-board-game\Documents and Flowcharts\Build Documentation
-	for further updates.
-	*/
-
 	//substitute for plDecide
 	char plDecide = player_select_screen();
 
