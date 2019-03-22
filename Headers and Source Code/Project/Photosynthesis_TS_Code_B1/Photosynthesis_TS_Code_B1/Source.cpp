@@ -2,7 +2,7 @@
 Date Format: mm/dd/yyyy
 Date Created: 3-2-2019
 
-Last Updated: 3-3-2019
+Last Updated: 3-20-2019
 
 Author: J. Daniel Reveles (aka Elena Reveles preferred name)
 
@@ -16,108 +16,343 @@ The naming convention of the project is name of game_abbreviation for what the c
 
 using namespace std;
 
+char player_select_screen();
+void _2pl_function(bool &);
+void _3pl_function(bool &);
+void _4pl_function(bool &);
+void start_game(char);
+
+/*The first additional lines of code will be pseudo_code. In other words the code may stay in the main function
+or it may move to a function of its own within the same source file or to a different header file.
+
+Typical turn sequence.
+1. Photosynthesis Phase: The player with the First Player Token moves the Sun Segment clockwise, to the next angle on the hexegonal
+	board. (note: this step is skipped during the first round of the game) Light points are accumulated based on the position of the sun.
+
+2. Life Cycle Phase: After all players have collected their Light points, whoever holds the First Player Token starts taking their actions.
+	Here is a list of the possible actions. The player can buy trees or seedlings from their waiting section with the Light points accrued
+	during the photosynthesis phase. They can also plant seeds, depending on the placement of their trees. They can also grow their trees and/or
+	cultivate them. All these actions require them to spend their Light points except for planting a seed. These actions do not need to be 
+	taken in any particular order, although strategy may require otherwise.
+
+The notes taken here are not the end all be all for the rules. Please consult the "Rules" section of the GitHub for a complete description of
+how the game is supposed to work.*/
+
+/*
+Update 3-20-2019:
+I have been working on a turn simulator during school and work hours. I ended up writing a better version during that time so I will post the progress
+I have made so far here. Please refer to Turn Simulator Source Code in C:\Users\Shabadoo\Desktop\GitHub Projects\Photosynthesis Game\Photosynthesis-board-game\Documents and Flowcharts\Build Documentation
+for further updates.
+*/
+
 int main()
 {
-	//The first additional lines of code will be pseudo_code. In other words the code may stay in the main function
-	//or it may move to a function of its own within the same source file or to a different header file.
+	//substitute for plDecide
+	char plDecide = player_select_screen();
 
-	//Typical turn sequence.
-	//1. Photosynthesis Phase: The player with the First Player Token moves the Sun Segment clockwise, to the next angle on the hexegonal
-	//	board. (note: this step is skipped during the first round of the game) Light points are accumulated based on the position of the sun.
+	start_game(plDecide);
 
-	//2. Life Cycle Phase: After all players have collected their Light points, whoever holds the First Player Token starts taking their actions.
-	//	Here is a list of the possible actions. The player can buy trees or seedlings from their waiting section with the Light points accrued
-	//	during the photosynthesis phase. They can also plant seeds, depending on the placement of their trees. They can also grow their trees and/or
-	//	cultivate them. All these actions require them to spend their Light points except for planting a seed. These actions do not need to be 
-	//	taken in any particular order, although strategy may require otherwise.
+	cout << "This signifies the end of the game" << endl;
+	cout << "Thank you for playing...Goodbye\n";
 
-	//The notes taken here are not the end all be all for the rules. Please consult the "Rules" section of the GitHub for a complete description of
-	//how the game is supposed to work.
+	system("pause");
+	return 0;
+}
 
-	string pl_decision; //This variable will hold the value of what it is the player wants to do. So far this variable works regardless of 
-						//which player it is.
+char player_select_screen()
+{
+	char plDecide;
 
-	bool repeat = 1;
+	while (true)
+	{
+		cout << "Player select screen\n\n";
+		cout << "Minimum 2 players required\n\n";
 
+		cout << "A: 2 Player\n";
+		cout << "B: 3 Player\n";
+		cout << "C: 4 Player\n";
+		cin >> plDecide;
+
+		if (plDecide == 'A' || plDecide == 'a')
+			return plDecide;
+		else if (plDecide == 'B' || plDecide == 'b')
+			return plDecide;
+		else if (plDecide == 'C' || plDecide == 'c')
+			return plDecide;
+		else
+			cout << "Please enter a valid response\n";
+	};
+
+	return plDecide;
+}
+
+void _2pl_function(bool &check)
+{
+	cout << "2 player mode\n\n";
+	int turn_counter = 1;
+	int day_counter = 0;
 	do
 	{
-		cout << "Player, what would you like to do?\n";
-		cin >> pl_decision;
 
-		if (pl_decision == "buy" || pl_decision == "Buy") //possible conditions: buy, plant, grow, harvest, end turn
+		bool stuff = 1;
+
+		cout << "Turn: " << turn_counter << endl;
+		cout << "Day:  " << day_counter + 1 << endl;
+		cout << "Player 1, take your turn: " << endl;
+		do
 		{
-			string pl_buy;
-			cout << "What would you like to buy?\n";
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
 
-			//creating a 2 dimensional array to list what I can currently buy
-			string items[4] = { "Seeds", "Sm Trees", "Med Trees", "Lrg Trees" }; //Initializing the array
-			int amt_and_price[2][4]; //The first row will display the amount and the second row will display the price for the item
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 1 stuff
 
-			int num_init = 0;
 
-			for (int i = 0; i < 4; i++)
-				cout << items[i] << "\t";
-
-			cout << endl;
-
-			//This loop will be used to initialize the array
-			for (int i = 0; i < 2; i++) //This steps through the rows of the array
-			{
-				for (int j = 0; j < 4; j++) //This steps through the columns of the array
-				{
-					amt_and_price[i][j] = num_init;
-					num_init++;
-				}
-			} //The end result of this array should be 0, 1, 2, 3,... n
-
-			for (int i = 0; i < 2; i++) //This steps through the rows of the array
-			{
-				for (int j = 0; j < 4; j++) //This steps through the columns of the array
-					cout << amt_and_price[i][j] << "\t\t";
-
-				cout << "\n";
-			}
-
-			string prch_decision; //This will hold the decision made by the player
-			cin >> prch_decision;
-
-			//create a list of items to be purchased. label them 1-n and label each one with a price. The price may come from the object class
-			//but list it here anyways for demonstration purposes. Most likely need to create a two dimensional array for this.
-		}
-		else if (pl_decision == "plant" || pl_decision == "Plant") //This will enter the plant phase
+		stuff = 1;
+		cout << "Player 2, take your turn: \n";
+		do
 		{
-			string pl_plant;
-			cout << "What would you like to plant?\n";
-			cin >> pl_plant;
-			//create a list of items to be planted. label them 1-n and label each one. The price may come from the object class
-			//but list it here anyways for demonstration purposes. Most likely need to create a two dimensional array for this.
-		}
-		else if (pl_decision == "grow" || pl_decision == "Grow") //This will enter the grow phase
-		{
-			string pl_grow;
-			cout << "Which tree/seedling would ou like to grow?\n";
-			cin >> pl_grow;
-			//create a list of items to be grown. label them 1-n and label each one with a price. The price may come from the object class
-			//but list it here anyways for demonstration purposes. Most likely need to create a two dimensional array for this.
-		}
-		else if (pl_decision == "harvest" || pl_decision == "Harvest") //This will enter the harvest phase
-		{
-			string pl_harvest;
-			cout << "Which tree would you like to harvest?\n";
-			cin >> pl_harvest;
-			//create a list of items to be harvested. label them 1-n and label each one with a price. The price may come from the object class
-			//but list it here anyways for demonstration purposes. Most likely need to create a two dimensional array for this.
-		}
-		else if (pl_decision == "end" || pl_decision == "End") //This ends the player's turn
-		{
-			char pl_end;
-			cout << "Are you sure you want to end your turn?\n";
-			cin >> pl_end;
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
 
-			if (pl_end == 'y' || pl_end == 'Y') //This is just for reassurance.
-				repeat = 0;//end the loop and break out of these if statements
-		}
-	} while (repeat); //Section updated on 3-3-2019. Not fully expanded since I moved to working on the set up section.
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 2 stuff
 
-	return 0;
+						 /*	day_counter = 3;
+						 turn_counter = 6;*/ //you left off here bozo 3/18/2019
+
+		if (turn_counter == 6)
+		{
+			day_counter++;
+			turn_counter = 1;
+		}
+		else
+			turn_counter++;
+
+		if (day_counter == 3)
+			check = 0;
+	} while (check);
+}
+
+void _3pl_function(bool &check) //This will have the same code as 2 player mode but with additional players
+{
+	cout << "3 Player mode";
+	int turn_counter = 1;
+	int day_counter = 0;
+	do
+	{
+
+		bool stuff = 1;
+
+		cout << "Turn: " << turn_counter << endl;
+		cout << "Day:  " << day_counter + 1 << endl;
+		cout << "Player 1, take your turn: " << endl;
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 1 stuff
+
+
+		stuff = 1;
+		cout << "Player 2, take your turn: \n";
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 2 stuff
+
+		stuff = 1;
+		cout << "Player 3, take your turn: \n";
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 3 stuff
+
+		if (turn_counter == 6)
+		{
+			day_counter++;
+			turn_counter = 1;
+		}
+		else
+			turn_counter++;
+
+		if (day_counter == 3)
+			check = 0;
+	} while (check);
+}
+
+void _4pl_function(bool &check) //This will have the same code as 2 player mode but with additional players
+{
+	cout << "4 player mode";
+	int turn_counter = 1;
+	int day_counter = 0;
+	do
+	{
+
+		bool stuff = 1;
+
+		cout << "Turn: " << turn_counter << endl;
+		cout << "Day:  " << day_counter + 1 << endl;
+		cout << "Player 1, take your turn: " << endl;
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 1 stuff
+
+
+		stuff = 1;
+		cout << "Player 2, take your turn: \n";
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 2 stuff
+
+		stuff = 1;
+		cout << "Player 3, take your turn: \n";
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 3 stuff
+
+		stuff = 1;
+		cout << "Player 4, take your turn: \n";
+		do
+		{
+			string shit;
+			cout << "Blah blah blah\n";
+			cout << "Doing some stuff\n\n";
+			cout << "Would you like to stop doing some stuff?\n";
+			cin >> shit;
+
+			if (shit == "y" || shit == "Y")
+				stuff = 0;
+			else if (shit == "exit" || shit == "end") //these will be taken out completely or moved to a spot that is more convenient
+				exit;
+			else
+				cout << "Okay, let's keep doing stuff.\n";
+		} while (stuff); //This is player 4 stuff
+
+		if (turn_counter == 6)
+		{
+			day_counter++;
+			turn_counter = 1;
+		}
+		else
+			turn_counter++;
+
+		if (day_counter == 3)
+			check = 0;
+	} while (check);
+}
+
+void start_game(char plDecide)
+{
+	bool check = true;
+	char rematch_;
+
+
+	bool rematch__check = true;
+	while (rematch__check)
+	{
+		if (plDecide == 'A' || plDecide == 'a')
+			_2pl_function(check);
+		else if (plDecide == 'B' || plDecide == 'b')
+			_3pl_function(check);
+		else
+			_4pl_function(check);
+
+		cout << "Would you like a rematch?";
+		cin >> rematch_;
+
+		if (rematch_ == 'n' || rematch_ == 'N')
+			check = false;
+		else if (rematch_ == 'y' || rematch_ == 'Y')
+		{
+			cout << "Here we go again\n\n";
+			cout << check << endl;
+		}
+		else
+			cout << "Please enter a valid response\n";
+	};
 }
