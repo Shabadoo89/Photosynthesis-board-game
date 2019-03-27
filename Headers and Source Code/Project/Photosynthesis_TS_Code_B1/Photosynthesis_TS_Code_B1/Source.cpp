@@ -2,7 +2,7 @@
 Date Format: mm/dd/yyyy
 Date Created: 3-2-2019
 
-Last Updated: 3-20-2019
+Last Updated: 3-27-2019
 
 Author: J. Daniel Reveles (aka Elena Reveles preferred name)
 
@@ -16,11 +16,11 @@ The naming convention of the project is name of game_abbreviation for what the c
 
 using namespace std;
 
-char player_select_screen();
-void _2pl_function(bool &);
-void _3pl_function(bool &);
-void _4pl_function(bool &);
-void start_game(char);
+char player_select_screen(); //This function only serves to select the amount of players that will be playing
+void _2pl_function(bool &);  //This function runs as a cause of the player_select_screen() function
+void _3pl_function(bool &);  //This function runs as a cause of the player_select_screen() function
+void _4pl_function(bool &);  //This function runs as a cause of the player_select_screen() function
+void start_game(char);		 //This starts the game.
 
 /*The first additional lines of code will be pseudo_code. In other words the code may stay in the main function
 or it may move to a function of its own within the same source file or to a different header file.
@@ -146,8 +146,10 @@ void _2pl_function(bool &check)
 			turn_counter++;
 
 		if (day_counter == 3)
-			check = 0;
+			check = false; //This is changing the value in the start_game function. Please be aware.
 	} while (check);
+	check = true; //testing this as of 3/27/2019. Theoretically this should allow the current loop to iterate if chosen yes.
+	//testing is successful for the reset flag. Will implement in the 3 player and 4 player modes.
 }
 
 void _3pl_function(bool &check) //This will have the same code as 2 player mode but with additional players
@@ -225,8 +227,9 @@ void _3pl_function(bool &check) //This will have the same code as 2 player mode 
 			turn_counter++;
 
 		if (day_counter == 3)
-			check = 0;
+			check = false; //This is changing the value in the start_game function. Please be aware.
 	} while (check);
+	check = true; //Resetting flag to continue loop in start_game function
 }
 
 void _4pl_function(bool &check) //This will have the same code as 2 player mode but with additional players
@@ -322,8 +325,9 @@ void _4pl_function(bool &check) //This will have the same code as 2 player mode 
 			turn_counter++;
 
 		if (day_counter == 3)
-			check = 0;
+			check = false; //This is changing the value in the start_game function. Please be aware.
 	} while (check);
+	check = true; //Resetting flag to continue loop in start_game function
 }
 
 void start_game(char plDecide)
@@ -331,9 +335,7 @@ void start_game(char plDecide)
 	bool check = true;
 	char rematch_;
 
-
-	bool rematch__check = true;
-	while (rematch__check)
+	while (check)
 	{
 		if (plDecide == 'A' || plDecide == 'a')
 			_2pl_function(check);
@@ -342,17 +344,25 @@ void start_game(char plDecide)
 		else
 			_4pl_function(check);
 
-		cout << "Would you like a rematch?";
-		cin >> rematch_;
-
-		if (rematch_ == 'n' || rematch_ == 'N')
-			check = false;
-		else if (rematch_ == 'y' || rematch_ == 'Y')
+		bool rematch_bound_checking = true;
+		do
 		{
-			cout << "Here we go again\n\n";
-			cout << check << endl;
-		}
-		else
-			cout << "Please enter a valid response\n";
+			cout << "Would you like a rematch?\n";
+			cin >> rematch_;
+			if (rematch_ == 'n' || rematch_ == 'N')
+			{
+				cout << "Bouncing the fucc outa here!!!\n";
+				rematch_bound_checking = false;
+				check = false;
+			}
+			else if (rematch_ == 'y' || rematch_ == 'Y')
+			{
+				cout << "Here we go again\n\n";
+				cout << check << endl;
+				rematch_bound_checking = false;
+			}
+			else
+				cout << "Please enter a valid response\n";
+		} while (rematch_bound_checking);
 	};
 }
