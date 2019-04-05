@@ -2,7 +2,7 @@
 Date Format: mm/dd/yyyy
 Date Created: 3-2-2019
 
-Last Updated: 3-27-2019
+Last Updated: 4-4-2019
 
 Author: J. Daniel Reveles (aka Elena Reveles preferred name)
 
@@ -99,11 +99,21 @@ void _2pl_function(bool &check)
 		cout << "Turn: " << turn_counter << endl;
 		cout << "Day:  " << day_counter + 1 << endl;
 		cout << "Player 1, take your turn: " << endl;
+
+		do
+		{ //The content of this loop will most likely be absorbed into the header file for the player objects or it's own class object
+			char action_point; //This will decide what to do
+			cout << "What would you like to do?\n";
+			cin >> action_point;
+		} while (stuff); //We are going to reuse this boolean for both loops.
+
+		stuff = 1;
+
 		do
 		{
 			string shit;
 			cout << "Blah blah blah\n";
-			cout << "Doing some stuff\n\n";
+			cout << "Doing some stuff\n\n"; //this will be commented out once the 
 			cout << "Would you like to stop doing some stuff?\n";
 			cin >> shit;
 
