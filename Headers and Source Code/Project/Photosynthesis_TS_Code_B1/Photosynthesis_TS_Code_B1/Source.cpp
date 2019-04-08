@@ -2,7 +2,7 @@
 Date Format: mm/dd/yyyy
 Date Created: 3-2-2019
 
-Last Updated: 4-4-2019
+Last Updated: 4-8-2019
 
 Author: J. Daniel Reveles (aka Elena Reveles preferred name)
 
@@ -103,8 +103,29 @@ void _2pl_function(bool &check)
 		do
 		{ //The content of this loop will most likely be absorbed into the header file for the player objects or it's own class object
 			char action_point; //This will decide what to do
+
 			cout << "What would you like to do?\n";
+			cout << "A: Plant\nB: Grow\nC: Buy\n";
 			cin >> action_point;
+
+			if (action_point == 'a' || action_point == 'A')
+			{
+				cout << "Where would you like to plant the seedling?\n";
+				stuff = 0;
+			}
+			else if (action_point == 'b' || action_point == 'B')
+			{
+				cout << "Which tree would you like to grow?\n";
+				stuff = 0;
+			}
+			else if (action_point == 'c' || action_point == 'C')
+			{
+				cout << "Which tree/seedling would you like to buy?\n";
+				stuff = 0;
+			}
+			else
+				cout << "Please choose a correct answer\n";
+
 		} while (stuff); //We are going to reuse this boolean for both loops.
 
 		stuff = 1;

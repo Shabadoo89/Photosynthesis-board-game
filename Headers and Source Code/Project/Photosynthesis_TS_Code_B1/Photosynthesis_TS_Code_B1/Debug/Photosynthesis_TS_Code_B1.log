@@ -1,12 +1,11 @@
-﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  Source.cpp
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(113): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(132): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(179): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(198): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(216): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(259): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(278): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(296): warning C4551: function call missing argument list
-c:\users\shabadoo\desktop\github projects\photosynthesis\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(314): warning C4551: function call missing argument list
-  Photosynthesis_TS_Code_B1.vcxproj -> C:\Users\Shabadoo\Desktop\GitHub Projects\Photosynthesis\Photosynthesis-board-game\Headers and Source Code\Project\Photosynthesis_TS_Code_B1\Debug\Photosynthesis_TS_Code_B1.exe
+﻿  Source.cpp
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(144): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(163): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(210): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(229): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(247): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(290): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(309): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(327): warning C4551: function call missing argument list
+c:\users\revelesmartinezj\documents\github\photosynthesis-board-game\headers and source code\project\photosynthesis_ts_code_b1\photosynthesis_ts_code_b1\source.cpp(345): warning C4551: function call missing argument list
+  Photosynthesis_TS_Code_B1.vcxproj -> C:\Users\revelesmartinezj\Documents\GitHub\Photosynthesis-board-game\Headers and Source Code\Project\Photosynthesis_TS_Code_B1\Debug\Photosynthesis_TS_Code_B1.exe
