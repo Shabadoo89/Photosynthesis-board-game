@@ -4,7 +4,7 @@ Date Created: 3-2-2019
 
 Last Updated: 4-8-2019
 
-Author: J. Daniel Reveles (aka Elena Reveles preferred name)
+Author: Elena Reveles (assigned at birth name: Daniel)
 
 Objective: The objective of this project is to write a code that manages the turn sequence (TS) for the
 digital version of the board game Photosynthesis. As the program get's updated I will update the build version as well.
