@@ -45,6 +45,12 @@ I have made so far here. Please refer to Turn Simulator Source Code in C:\Users\
 for further updates.
 */
 
+/*
+Update 7-6-2019:
+The turn sequence has practically been finished for all modes. The next step is to start writing the code that will decide the details in the process.
+I need to start writing the sequence in which stuff can be done. So maybe creating a menu that takes care of the planting and buying and extracting.
+*/
+
 int main()
 {
 	//substitute for plDecide
